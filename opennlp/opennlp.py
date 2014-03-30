@@ -24,7 +24,10 @@ class OpenNLP():
 
     def parse(self, text):
         # Clear any pending output
-        self.process.expect(".*")
+        try:
+            self.process.read_nonblocking(2048, 0)
+        except:
+            pass
 
         self.process.sendline(text)
 
@@ -37,7 +40,7 @@ class OpenNLP():
         self.process.expect("\)\r\n", timeout)
         results = self.process.before
 
-        print results
+        return results
 
 def main():
     parser = optparse.OptionParser(usage="%prog [OPTIONS]")
