@@ -21,6 +21,7 @@ class OpenNLP():
         self.process = pexpect.spawn(cmd)
         self.process.setecho(False)
         self.process.expect('done')
+        self.process.expect('\r\n')
 
     def parse(self, text):
         # Clear any pending output
@@ -37,7 +38,7 @@ class OpenNLP():
         # Long text also needs increase in socket timeout
         timeout = 5 + len(text) / 20.0
 
-        self.process.expect("\)\r\n", timeout)
+        self.process.expect('\r\n', timeout)
         results = self.process.before
 
         return results
