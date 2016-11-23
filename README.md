@@ -8,13 +8,18 @@ This package provides a Python wrapper for [Apache OpenNLP](https://opennlp.apac
 
 Installation
 ------------
+First, install git python and java if you haven't already.
 
-First, download opennlp-python and install requirements.
+    sudo apt-get update
+    sudo apt-get install -y git python python-setuptools python-pip default-jre
+    
+Then, download opennlp-python and install requirements.
 
     git clone https://github.com/curzona/opennlp-python.git
-    sudo pip install pexpect
+    cd opennlp-python
+    sudo pip install -r requirements.txt
 
-Then, download [Apache OpenNLP](https://opennlp.apache.org/) tools.
+Next, download [Apache OpenNLP](https://opennlp.apache.org/) tools.
   
     wget http://mirror.metrocast.net/apache//opennlp/opennlp-1.5.3/apache-opennlp-1.5.3-bin.tar.gz
     tar -zxvf apache-opennlp-1.5.3-bin.tar.gz
@@ -25,7 +30,7 @@ Finally, download the pre-trained parser model from [Apache OpenNLP](http://open
     mkdir models
     wget http://opennlp.sourceforge.net/models-1.5/en-parser-chunking.bin
     mv en-parser-chunking.bin models/
-    cd ../..
+    cd ..
   
 Running
 -------
